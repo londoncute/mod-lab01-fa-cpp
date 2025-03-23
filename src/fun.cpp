@@ -93,6 +93,7 @@ unsigned int faStr3(const char *str) {
         totalLength += wordLength;
         wordCount++;
     }
-
-    return wordCount == 0 ? 0 : static_cast<unsigned int>(std::round(static_cast<double>(totalLength) / wordCount));
+    double midLength = static_cast<double>(totalLength) / wordCount);
+    unsigned int ansver = static_cast<unsigned int>(std::round(midLength);
+    return wordCount == 0 ? 0 :ansver;
 }
