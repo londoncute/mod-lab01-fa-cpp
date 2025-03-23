@@ -1,4 +1,5 @@
 // Copyright 2022 UNN-IASR
+
 #include "fun.h"
 #include <cctype>
 #include <cstring>
@@ -93,5 +94,5 @@ unsigned int faStr3(const char *str) {
         wordCount++;
     }
 
-    return wordCount == 0 ? 0 : std::round((double)totalLength / wordCount);
+    return wordCount == 0 ? 0 : static_cast<unsigned int>(std::round(static_cast<double>(totalLength) / wordCount));
 }
