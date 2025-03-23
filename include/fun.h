@@ -1,6 +1,6 @@
 // Copyright 2022 UNN-IASR
-#ifndef FUN_H
-#define FUN_H
+#ifndef INCLUDE_FUN_H_
+#define INCLUDE_FUN_H_
 
 unsigned int faStr1(const char *str);
 unsigned int faStr2(const char *str);
