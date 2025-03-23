@@ -19,9 +19,9 @@ void test_faStr1() {
 
     for (const auto& test : testCases) {
         unsigned int result = faStr1(test.input);
-        std::cout << "Input: \"" << test.input << "\" | Expected: " 
-                  << test.expected << " | Got: " << result 
-                  << (result == test.expected ? " ✅" : " ❌") << std::endl;
+        std::cout << "Input: \"" << test.input << "\" | Expected: "
+            << test.expected << " | Got: " << result
+            << (result == test.expected ? " ✅" : " ❌") << std::endl;
     }
 }
 
