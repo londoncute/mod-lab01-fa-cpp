@@ -1,29 +1,77 @@
 // Copyright 2022 UNN-IASR
-#include <gtest/gtest.h>
-#include "../include/fun.h"
+#include <iostream>
+#include "fun.h"
 
-// Тест для faStr1 (слова без цифр)
-TEST(FaStr1Test, BasicCases) {
-    EXPECT_EQ(faStr1("Hello world 123 abc"), 2); // "Hello", "world"
-    EXPECT_EQ(faStr1("123 456 789"), 0); // Нет слов без цифр
-    EXPECT_EQ(faStr1("one two three"), 3); // Все слова без цифр
+// Функция для тестирования faStr1
+void test_faStr1() {
+    std::cout << "Testing faStr1..." << std::endl;
+    struct TestCase {
+        const char* input;
+        unsigned int expected;
+    } testCases[] = {
+        {"Hello world 123 abc", 2},  // "Hello", "world"
+        {"123 456 789", 0},         // Нет слов без цифр
+        {"one two three", 3},       // Все слова без цифр
+        {"", 0},                    // Пустая строка
+        {"   ", 0},                  // Только пробелы
+        {"text1 text2 text", 1}     // Только одно слово без цифр
+    };
+
+    for (const auto& test : testCases) {
+        unsigned int result = faStr1(test.input);
+        std::cout << "Input: \"" << test.input << "\" | Expected: " 
+                  << test.expected << " | Got: " << result 
+                  << (result == test.expected ? " ✅" : " ❌") << std::endl;
+    }
 }
 
-// Тест для faStr2 (слова с заглавной буквы и только строчными буквами)
-TEST(FaStr2Test, BasicCases) {
-    EXPECT_EQ(faStr2("Hello world Apple banana"), 2); // "Hello", "Apple"
-    EXPECT_EQ(faStr2("Zebra Cat Dog"), 3); // Все слова подходят
-    EXPECT_EQ(faStr2("HELLO world aPPle"), 0); // Нет подходящих слов
+// Функция для тестирования faStr2
+void test_faStr2() {
+    std::cout << "\nTesting faStr2..." << std::endl;
+    struct TestCase {
+        const char* input;
+        unsigned int expected;
+    } testCases[] = {
+        {"Hello world Apple banana", 2}, // "Hello", "Apple"
+        {"Zebra Cat Dog", 3},            // Все слова подходят
+        {"HELLO world aPPle", 0},        // Нет подходящих слов
+        {"Aaa Bbb Ccc Ddd", 4},          // Все слова подходят
+        {"apple Banana cherry", 1}       // Только "Banana"
+    };
+
+    for (const auto& test : testCases) {
+        unsigned int result = faStr2(test.input);
+        std::cout << "Input: \"" << test.input << "\" | Expected: " 
+                  << test.expected << " | Got: " << result 
+                  << (result == test.expected ? " ✅" : " ❌") << std::endl;
+    }
 }
 
-// Тест для faStr3 (средняя длина слова)
-TEST(FaStr3Test, BasicCases) {
-    EXPECT_EQ(faStr3("Hello world this is test"), 4); // (5+5+4+2+4) / 5 = 4
-    EXPECT_EQ(faStr3("One two three four"), 4); // (3+3+5+4) / 4 = 4
-    EXPECT_EQ(faStr3("   "), 0); // Нет слов
+// Функция для тестирования faStr3
+void test_faStr3() {
+    std::cout << "\nTesting faStr3..." << std::endl;
+    struct TestCase {
+        const char* input;
+        unsigned int expected;
+    } testCases[] = {
+        {"Hello world this is test", 4},  // (5+5+4+2+4) / 5 = 4
+        {"One two three four", 4},       // (3+3+5+4) / 4 = 4
+        {"   ", 0},                      // Нет слов
+        {"longest shortest tiny", 7},    // (7+8+4) / 3 = 7
+        {"A bb ccc dddd eeeee", 3}       // (1+2+3+4+5) / 5 = 3
+    };
+
+    for (const auto& test : testCases) {
+        unsigned int result = faStr3(test.input);
+        std::cout << "Input: \"" << test.input << "\" | Expected: " 
+                  << test.expected << " | Got: " << result 
+                  << (result == test.expected ? " ✅" : " ❌") << std::endl;
+    }
 }
 
-int main(int argc, char **argv) {
-    ::testing::InitGoogleTest(&argc, argv);
-    return RUN_ALL_TESTS();
+int main() {
+    test_faStr1();
+    test_faStr2();
+    test_faStr3();
+    return 0;
 }
