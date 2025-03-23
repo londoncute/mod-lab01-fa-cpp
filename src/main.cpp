@@ -41,8 +41,8 @@ void test_faStr2() {
 
     for (const auto& test : testCases) {
         unsigned int result = faStr2(test.input);
-        std::cout << "Input: \"" << test.input << "\" | Expected: " 
-                  << test.expected << " | Got: " << result 
+        std::cout << "Input: \"" << test.input << "\" | Expected: "
+                  << test.expected << " | Got: " << result
                   << (result == test.expected ? " ✅" : " ❌") << std::endl;
     }
 }
@@ -63,8 +63,8 @@ void test_faStr3() {
 
     for (const auto& test : testCases) {
         unsigned int result = faStr3(test.input);
-        std::cout << "Input: \"" << test.input << "\" | Expected: " 
-                  << test.expected << " | Got: " << result 
+        std::cout << "Input: \"" << test.input << "\" | Expected: "
+                  << test.expected << " | Got: " << result
                   << (result == test.expected ? " ✅" : " ❌") << std::endl;
     }
 }
